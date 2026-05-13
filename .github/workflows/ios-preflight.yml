@@ -1,0 +1,67 @@
+name: iOS preflight
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/ios-preflight.yml'
+      - 'build-ios.sh'
+      - 'go.mod'
+      - 'go.sum'
+      - 'mobile/**'
+      - 'ios/**'
+
+jobs:
+  simulator-build:
+    name: Build framework and simulator app
+    runs-on: macos-latest
+
+    steps:
+      - name: Check out wrapper
+        uses: actions/checkout@v4
+        with:
+          path: vk-turn-proxy-ios
+
+      - name: Check out core
+        uses: actions/checkout@v4
+        with:
+          repository: Moroka8/vk-turn-proxy
+          ref: ios-clientcore-refactor
+          path: vk-turn-proxy-core
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: vk-turn-proxy-ios/go.mod
+          cache-dependency-path: |
+            vk-turn-proxy-ios/go.sum
+            vk-turn-proxy-core/go.sum
+
+      - name: Test Go wrapper
+        working-directory: vk-turn-proxy-ios
+        run: go test ./...
+
+      - name: Test Go core
+        working-directory: vk-turn-proxy-core
+        run: go test ./...
+
+      - name: Install gomobile
+        run: |
+          go install golang.org/x/mobile/cmd/gomobile@latest
+          go install golang.org/x/mobile/cmd/gobind@latest
+          gomobile init
+
+      - name: Build Mobile.xcframework
+        working-directory: vk-turn-proxy-ios
+        run: ./build-ios.sh
+
+      - name: Build iOS simulator app
+        working-directory: vk-turn-proxy-ios
+        run: |
+          xcodebuild \
+            -project ios/VKTurnProxyApp.xcodeproj \
+            -scheme VKTurnProxyApp \
+            -sdk iphonesimulator \
+            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            CODE_SIGNING_ALLOWED=NO \
+            build

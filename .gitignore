@@ -1,0 +1,13 @@
+Mobile.xcframework/
+*.xcarchive
+*.ipa
+*.xcuserstate
+*.xcuserdata/
+.DS_Store
+AGENTS.md
+README.md
+build/
+DerivedData/
+docs/
+.gocache/
+.gomodcache/
