@@ -5,6 +5,11 @@ go 1.25.5
 require github.com/cacggghp/vk-turn-proxy v0.0.0
 
 require (
+	golang.org/x/time v0.15.0 // indirect
+	google.golang.org/protobuf v1.36.11 // indirect
+)
+
+require (
 	github.com/andybalholm/brotli v1.2.1 // indirect
 	github.com/bdandy/go-errors v1.2.2 // indirect
 	github.com/bdandy/go-socks4 v1.2.3 // indirect
@@ -45,7 +50,12 @@ require (
 	golang.org/x/sys v0.43.0 // indirect
 	golang.org/x/text v0.35.0 // indirect
 	golang.org/x/tools v0.43.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260504160031-60b97b32f348 // indirect
+	google.golang.org/genproto v0.0.0-20260511170946-3700d4141b60
+)
+
+exclude (
+	google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8
+	google.golang.org/genproto v0.0.0-20190819201941-24fa4b261c55
 )
 
 replace github.com/cacggghp/vk-turn-proxy => ../vk-turn-proxy-core
