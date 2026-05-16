@@ -64,6 +64,6 @@ jobs:
             -project ios/VKTurnProxyApp.xcodeproj \
             -scheme VKTurnProxyApp \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -destination 'generic/platform=iOS Simulator' \
             CODE_SIGNING_ALLOWED=NO \
             build
