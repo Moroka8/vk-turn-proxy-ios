@@ -67,3 +67,33 @@ jobs:
             -destination 'generic/platform=iOS Simulator' \
             CODE_SIGNING_ALLOWED=NO \
             build
+
+      - name: Build unsigned iOS device app
+        working-directory: vk-turn-proxy-ios
+        run: |
+          xcodebuild \
+            -project ios/VKTurnProxyApp.xcodeproj \
+            -scheme VKTurnProxyApp \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -configuration Release \
+            CONFIGURATION_BUILD_DIR="$PWD/build/iphoneos" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            build
+
+      - name: Package unsigned IPA
+        working-directory: vk-turn-proxy-ios
+        run: |
+          rm -rf build/ipa build/VKTurnProxyApp-unsigned.ipa
+          mkdir -p build/ipa/Payload
+          cp -R build/iphoneos/VKTurnProxyApp.app build/ipa/Payload/
+          (cd build/ipa && zip -qry ../VKTurnProxyApp-unsigned.ipa Payload)
+
+      - name: Upload unsigned IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: VKTurnProxyApp-unsigned-ipa
+          path: vk-turn-proxy-ios/build/VKTurnProxyApp-unsigned.ipa
+          if-no-files-found: error
