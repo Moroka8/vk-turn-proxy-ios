@@ -53,7 +53,7 @@ jobs:
 
       - name: Build Mobile.xcframework
         working-directory: vk-turn-proxy-ios
-        run: ./build-ios.sh
+        run: bash ./build-ios.sh
 
       - name: Build iOS simulator app
         working-directory: vk-turn-proxy-ios
