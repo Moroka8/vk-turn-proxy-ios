@@ -38,15 +38,13 @@ require (
 	github.com/xtaci/kcp-go/v5 v5.6.18 // indirect
 	github.com/xtaci/smux v1.5.34 // indirect
 	golang.org/x/crypto v0.49.0 // indirect
-	golang.org/x/mobile v0.0.0-20260217195705-b56b3793a9c4
 	golang.org/x/mod v0.34.0 // indirect
 	golang.org/x/net v0.52.0 // indirect
 	golang.org/x/sync v0.20.0 // indirect
 	golang.org/x/sys v0.43.0 // indirect
 	golang.org/x/text v0.35.0 // indirect
 	golang.org/x/tools v0.43.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260406210006-6f92a3bedf2d // indirect
-	google.golang.org/protobuf v1.36.11 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260504160031-60b97b32f348 // indirect
 )
 
 replace github.com/cacggghp/vk-turn-proxy => ../vk-turn-proxy-core
