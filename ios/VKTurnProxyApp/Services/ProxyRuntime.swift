@@ -126,11 +126,11 @@ final class ProxyRuntime: ObservableObject {
 
 private final class MobileClientAdapter {
 #if canImport(Mobile)
-    private let client: MobileIosClient?
+    private let client: GoIosClient?
     private var callback: MobileCallback?
 
     init() {
-        client = MobileIosNewClient()
+        client = GoIosNewClient()
     }
 
     func start(configJSON: String, sink: ProxyRuntime) -> String {
@@ -163,7 +163,7 @@ private final class MobileClientAdapter {
 }
 
 #if canImport(Mobile)
-private final class MobileCallback: NSObject, MobileIosCallbackProtocol {
+private final class MobileCallback: NSObject, GoIosCallback {
     private weak var sink: ProxyRuntime?
 
     init(sink: ProxyRuntime) {
