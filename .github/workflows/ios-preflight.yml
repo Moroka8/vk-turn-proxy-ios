@@ -26,7 +26,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: Moroka8/vk-turn-proxy
-          ref: ios-clientcore-refactor
+          ref: main
           path: vk-turn-proxy-core
 
       - name: Set up Go
