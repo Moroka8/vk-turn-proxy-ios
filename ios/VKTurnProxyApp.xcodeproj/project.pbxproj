@@ -20,6 +20,7 @@
 		5A100001000000000000000B /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A200001000000000000000B /* Components.swift */; };
 		5A100001000000000000000C /* Mobile.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A200001000000000000000C /* Mobile.xcframework */; };
 		5A100001000000000000000D /* Mobile.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A200001000000000000000C /* Mobile.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5A100001000000000000000E /* BackgroundAudioKeepAlive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A200001000000000000000E /* BackgroundAudioKeepAlive.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,6 +51,7 @@
 		5A200001000000000000000B /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		5A200001000000000000000C /* Mobile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Mobile.xcframework; path = ../Mobile.xcframework; sourceTree = SOURCE_ROOT; };
 		5A200001000000000000000D /* VKTurnProxyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKTurnProxyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A200001000000000000000E /* BackgroundAudioKeepAlive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAudioKeepAlive.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			children = (
 				5A2000010000000000000003 /* ProfileStore.swift */,
 				5A2000010000000000000005 /* ProxyRuntime.swift */,
+				5A200001000000000000000E /* BackgroundAudioKeepAlive.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				5A1000010000000000000009 /* SessionView.swift in Sources */,
 				5A100001000000000000000A /* SettingsView.swift in Sources */,
 				5A100001000000000000000B /* Components.swift in Sources */,
+				5A100001000000000000000E /* BackgroundAudioKeepAlive.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +352,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "VK TURN Proxy";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "VK TURN Proxy listens on a local proxy endpoint selected in the active profile.";
+				INFOPLIST_KEY_UIBackgroundModes = audio;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -382,6 +387,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "VK TURN Proxy";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "VK TURN Proxy listens on a local proxy endpoint selected in the active profile.";
+				INFOPLIST_KEY_UIBackgroundModes = audio;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;

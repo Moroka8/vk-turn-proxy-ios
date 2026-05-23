@@ -38,6 +38,7 @@ final class ProxyRuntime: ObservableObject {
     @Published private(set) var lastError: String?
 
     private let client = MobileClientAdapter()
+    private let backgroundKeepAlive = BackgroundAudioKeepAlive()
 
     var isRunning: Bool {
         if case .running = state { return true }
@@ -63,12 +64,22 @@ final class ProxyRuntime: ObservableObject {
 
             let error = client.start(configJSON: configJSON, sink: self)
             if !error.isEmpty {
+                backgroundKeepAlive.stop()
                 state = .error(error)
                 lastError = error
                 appendLog(error)
                 activeProfile = nil
+                return
+            }
+
+            do {
+                try backgroundKeepAlive.start()
+                appendLog("Background audio keepalive started")
+            } catch {
+                appendLog("Background audio keepalive failed: \(error.localizedDescription)")
             }
         } catch {
+            backgroundKeepAlive.stop()
             state = .error(error.localizedDescription)
             lastError = error.localizedDescription
             appendLog(error.localizedDescription)
@@ -79,6 +90,7 @@ final class ProxyRuntime: ObservableObject {
     func stop() {
         guard isRunning else { return }
         appendLog("Stopping client")
+        backgroundKeepAlive.stop()
         client.stop()
     }
 
@@ -100,6 +112,7 @@ final class ProxyRuntime: ObservableObject {
             return
         }
         if status == "STOPPED" {
+            backgroundKeepAlive.stop()
             state = .stopped
             activeProfile = nil
             appendLog("Stopped")
@@ -107,6 +120,7 @@ final class ProxyRuntime: ObservableObject {
         }
         if status.hasPrefix("ERROR:") {
             let message = String(status.dropFirst("ERROR:".count))
+            backgroundKeepAlive.stop()
             state = .error(message)
             lastError = message
             activeProfile = nil
