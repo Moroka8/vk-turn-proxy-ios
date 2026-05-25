@@ -63,7 +63,7 @@ private extension Data {
 
     mutating func appendLittleEndian<T: FixedWidthInteger>(_ value: T) {
         var littleEndianValue = value.littleEndian
-        withUnsafeBytes(of: &littleEndianValue) { buffer in
+        Swift.withUnsafeBytes(of: &littleEndianValue) { buffer in
             append(contentsOf: buffer)
         }
     }
