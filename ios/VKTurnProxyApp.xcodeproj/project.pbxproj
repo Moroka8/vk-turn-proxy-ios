@@ -52,6 +52,7 @@
 		5A200001000000000000000C /* Mobile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Mobile.xcframework; path = ../Mobile.xcframework; sourceTree = SOURCE_ROOT; };
 		5A200001000000000000000D /* VKTurnProxyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKTurnProxyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A200001000000000000000E /* BackgroundAudioKeepAlive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAudioKeepAlive.swift; sourceTree = "<group>"; };
+		5A200001000000000000000F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				5A2000010000000000000001 /* VKTurnProxyApp.swift */,
+				5A200001000000000000000F /* Info.plist */,
 				5A4000010000000000000003 /* Models */,
 				5A4000010000000000000004 /* Services */,
 				5A4000010000000000000005 /* Documents */,
@@ -349,10 +351,8 @@
 					"$(PROJECT_DIR)/..",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "VK TURN Proxy";
+				INFOPLIST_FILE = VKTurnProxyApp/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "VK TURN Proxy listens on a local proxy endpoint selected in the active profile.";
-				INFOPLIST_KEY_UIBackgroundModes = audio;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -384,10 +384,8 @@
 					"$(PROJECT_DIR)/..",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "VK TURN Proxy";
+				INFOPLIST_FILE = VKTurnProxyApp/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "VK TURN Proxy listens on a local proxy endpoint selected in the active profile.";
-				INFOPLIST_KEY_UIBackgroundModes = audio;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
